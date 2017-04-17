@@ -307,23 +307,24 @@ final public class LwjglInput implements Input {
 				if (!keyEvents.isEmpty()) {
 					System.err.println("event size is: " + len);					
 				}
+				
 				for (int i = 0; i < len; i++) {
 					KeyEvent event = keyEvents.get(i);
-					currentEventTimeStamp = event.timeStamp;
-					switch (event.type) {
-					case KeyEvent.KEY_DOWN:
-						processor.keyTyped(event.keyChar);
-						break;
-					case KeyEvent.KEY_UP:
-						processor.keyUp(event.keyCode);
-						break;
-					case KeyEvent.KEY_TYPED:
-						processor.keyTyped(event.keyChar);
-						break;
-					}
+						currentEventTimeStamp = event.timeStamp;
+						switch (event.type) {
+//						case KeyEvent.KEY_DOWN:
+//							processor.keyTyped(event.keyChar);
+//							break;
+						case KeyEvent.KEY_UP:
+							processor.keyUp(event.keyCode);
+							break;
+						case KeyEvent.KEY_TYPED:
+							processor.keyTyped(event.keyChar);
+							break;
+						}
+					
 					usedKeyEvents.free(event);
 					
-//				}
 				}
 
 				len = touchEvents.size();
